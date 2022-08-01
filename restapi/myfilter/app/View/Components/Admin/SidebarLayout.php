@@ -4,16 +4,14 @@ namespace App\View\Components\Admin;
 
 use Illuminate\View\Component;
 
-class TemplateAdmin extends Component
+class SidebarLayout extends Component
 {
-    public $title;
-    public $menuPertama;
+    public $menuUtama;
     public $menuKedua;
 
-    public function __construct($title,$menuPertama,$menuKedua)
+    public function __construct($menuUtama,$menuKedua)
     {
-        $this->title = $title;
-        $this->menuPertama = $menuPertama;
+        $this->menuUtama = $menuUtama;
         $this->menuKedua = $menuKedua;
     }
 
@@ -24,6 +22,6 @@ class TemplateAdmin extends Component
      */
     public function render()
     {
-        return view('components.admin.template-admin');
+        return view('components.admin.sidebar-layout');
     }
 }

@@ -6,7 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
-class DashboardController extends Controller
+class KatasensorController extends Controller
 {
     protected $users;
     public function __construct()
@@ -19,10 +19,10 @@ class DashboardController extends Controller
 
     public function index()
     {
-        return view('admin.dashboard',array(
+        return view('admin.katasensor',array(
             'judul' => "Dashboard Administrator | MyFilter V.1.0",
-            'menuUtama' => 'dashboard',
-            'menuKedua' => 'dashboard',
+            'menuUtama' => 'master',
+            'menuKedua' => 'katasensor',
         ));
     }
 }

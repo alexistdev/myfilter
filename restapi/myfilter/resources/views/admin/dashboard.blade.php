@@ -1,4 +1,4 @@
-<x-admin.template-admin>
+<x-admin.template-admin :title="$judul" :menu-pertama="$menuUtama" :menu-kedua="$menuKedua">
     <!-- Content Header (Page header) -->
     <div class="content-header">
         <div class="container-fluid">

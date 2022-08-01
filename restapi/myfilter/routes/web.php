@@ -1,7 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\Admin\{DashboardController as DashAdm};
+use App\Http\Controllers\Admin\{DashboardController as DashAdm,
+    KatasensorController as KataAdm};
 
 
 Route::get('/', function () {
@@ -15,6 +16,7 @@ Route::get('/dashboard', function () {
 Route::group(['middleware' => ['web','auth','roles']],function() {
     Route::group(['roles' => 'admin'], function () {
         Route::get('/admin/dashboard', [DashAdm::class, 'index'])->name('adm.dashboard');
+        Route::get('/admin/katasensor', [KataAdm::class, 'index'])->name('adm.katasensor');
     });
 });
 
