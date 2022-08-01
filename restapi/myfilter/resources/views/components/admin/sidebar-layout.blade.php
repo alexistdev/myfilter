@@ -60,8 +60,8 @@
                         </p>
                     </a>
                 </li>
-                <li class="nav-item">
-                    <a href="pages/widgets.html" class="nav-link">
+                <li @class(['nav-item', 'menu-open' => $menuUtama == "riwayat"])>
+                    <a href="{{route('adm.riwayat')}}" @class(['nav-link', 'active' => $menuKedua == "riwayat"])>
                         <i class="nav-icon fas fa-th"></i>
                         <p>
                             Riwayat Filter
