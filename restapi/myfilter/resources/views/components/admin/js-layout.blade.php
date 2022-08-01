@@ -32,4 +32,10 @@
 
     <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
     <script src="{{asset('adminlte/dist/js/pages/dashboard.js')}}"></script>
+
+    <!-- Datatable -->
+    <script src="{{asset('adminlte/plugins/datatables/jquery.dataTables.js')}}"></script>
+    <script src="{{asset('adminlte/plugins/datatables-bs4/js/dataTables.bootstrap4.js')}}"></script>
+    <script src="{{asset('adminlte/plugins/datatables-responsive/js/responsive.bootstrap4.js')}}"></script>
+    <script src="{{asset('adminlte/plugins/datatables-responsive/js/dataTables.responsive.min.js')}}"></script>
 </div>

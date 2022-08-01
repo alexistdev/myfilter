@@ -27,34 +27,17 @@
                             <button class="btn btn-sm btn-primary">Add</button>
                         </div>
                         <div class="card-body">
-                            <table class="table table-bordered">
+                            <table id="tabel1" class="table table-bordered" style="width: 100%">
                                 <thead>
                                 <tr>
-                                    <th scope="col">#</th>
-                                    <th scope="col">First</th>
-                                    <th scope="col">Last</th>
-                                    <th scope="col">Handle</th>
+                                    <th scope="col" class="text-center">#</th>
+                                    <th scope="col" class="text-center">Kata-kata</th>
+                                    <th scope="col" class="text-center">Dibuat</th>
+                                    <th scope="col" class="text-center">Action</th>
                                 </tr>
                                 </thead>
                                 <tbody>
-                                <tr>
-                                    <th scope="row">1</th>
-                                    <td>Mark</td>
-                                    <td>Otto</td>
-                                    <td>@mdo</td>
-                                </tr>
-                                <tr>
-                                    <th scope="row">2</th>
-                                    <td>Jacob</td>
-                                    <td>Thornton</td>
-                                    <td>@fat</td>
-                                </tr>
-                                <tr>
-                                    <th scope="row">3</th>
-                                    <td>Larry</td>
-                                    <td>the Bird</td>
-                                    <td>@twitter</td>
-                                </tr>
+
                                 </tbody>
                             </table>
                         </div>
@@ -65,4 +48,44 @@
     </section>
     <!-- /.content -->
     <x-admin.js-layout />
+    <script>
+        // $(document).ready(function () {
+        //     $('#tabel1').DataTable({
+        //         'responsive': true
+        //     });
+        // });
+        $(document).ready(function () {
+            let base_url = "{{route('adm.katasensor')}}";
+            $('#tabel1').DataTable({
+                responsive: true,
+                processing: true,
+                serverSide: true,
+                ajax: {
+                    type: 'GET',
+                    url: base_url,
+                    async: true,
+                },
+                language: {
+                    processing: "Loading",
+                },
+                columns: [
+                    {
+                        data: 'index',
+                        class: 'text-center',
+                        defaultContent: '',
+                        orderable: false,
+                        searchable: false,
+                        width: '5%',
+                        render: function (data, type, row, meta) {
+                            return meta.row + meta.settings._iDisplayStart + 1; //auto increment
+                        }
+                    },
+                    {data: 'name', class: 'text-center'},
+                    {data: 'created_at', class: 'text-center'},
+                    {data: 'action', class: 'text-center', orderable: false},
+                ],
+                "bDestroy": true
+            });
+        });
+    </script>
 </x-admin.template-admin>
