@@ -38,6 +38,8 @@ class AuthenticatedSessionController extends Controller
                 return redirect()->intended(RouteServiceProvider::SUPER);
             case 2:
                 return redirect()->intended(RouteServiceProvider::ADMIN);
+            case 3:
+                return redirect()->intended(RouteServiceProvider::USER);
             default:
                 $request->session()->invalidate();
                 $request->session()->regenerateToken();

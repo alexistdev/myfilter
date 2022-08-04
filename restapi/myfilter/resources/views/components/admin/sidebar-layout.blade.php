@@ -14,7 +14,11 @@
                 <img src="{{asset('adminlte/dist/img/user2-160x160.jpg')}}" class="img-circle elevation-2" alt="User Image">
             </div>
             <div class="info">
+                @if(Auth::User()->role_id == "2")
                 <a href="#" class="d-block">Administrator</a>
+                @else
+                    <a href="#" class="d-block">User</a>
+                @endif
             </div>
         </div>
 
@@ -52,6 +56,7 @@
 {{--                        </li>--}}
 {{--                    </ul>--}}
 {{--                </li>--}}
+                @if(Auth::User()->role_id == "2")
                 <li class="nav-item">
                     <a href="{{route('adm.dashboard')}}" class="nav-link">
                         <i class="nav-icon fas fa-tachometer-alt"></i>
@@ -86,6 +91,16 @@
 
                     </ul>
                 </li>
+                @else
+                    <li class="nav-item">
+                        <a href="{{route('usr.dashboard')}}" class="nav-link">
+                            <i class="nav-icon fas fa-tachometer-alt"></i>
+                            <p>
+                                Dashboard
+                            </p>
+                        </a>
+                    </li>
+                    @endif
             </ul>
         </nav>
         <!-- /.sidebar-menu -->
