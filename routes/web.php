@@ -5,11 +5,11 @@ use App\Http\Controllers\Admin\{DashboardController as DashAdm,
     KatasensorController as KataAdm,
     RiwayatController as RiwayatAdm};
 use App\Http\Controllers\Home\{HomeController as HomeUser};
+use App\Http\Controllers\FrontendController as Home;
 
-Route::redirect('/', '/login');
-Route::get('/', function () {
-    return view('welcome');
-});
+//Route::redirect('/', '/login');
+Route::get('/', [Home::class,'index'])->name('frontend.home');
+Route::get('/pulau_pawahang', [Home::class,'pahawang'])->name('frontend.pahawang');
 
 Route::get('/dashboard', function () {
     return view('dashboard');
