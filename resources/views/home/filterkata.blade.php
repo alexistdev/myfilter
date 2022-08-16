@@ -41,17 +41,37 @@
                                 </div>
                             </div>
                             <div class="row">
-                                <div class="col-md-6">
-                                    <textarea name="" id="" class="form-control" cols="30" rows="10">
 
-                                    </textarea>
-                                </div>
+                                    <div class="col-md-6">
+                                        <form action="{{route('usr.filter')}}" method="post">
+                                        <div class="row">
+                                            @csrf
+                                            <div class="col-md-12">
+                                                <textarea name="filter" id="" class="form-control" cols="30"
+                                                          rows="10">   </textarea>
+                                            </div>
+                                            <div class="col-md-12 mt-2">
+                                                <button class="btn btn-sm btn-primary">Submit</button>
+                                            </div>
+
+
+                                        </div>
+                                        </form>
+                                    </div>
+
+
                                 <div class="col-md-6">
                                     <textarea name="" id="" class="form-control is-valid" cols="30" rows="10">
-
+                                    {{$kataFilter}}
                                     </textarea>
+                                    Hasil kata yang difilter :<span class="text-danger"> {{$katakotor}}</span><br/>
+                                    @if($solusi !== "")
+                                    Silahkan anda mengganti kata kasar tersebut dengan kata : <span class="text-success">{{$solusi}}</span>
+                                    @endif
                                 </div>
+
                             </div>
+
                         </div><!-- /.card-body -->
                     </div>
                     <!-- /.card -->
@@ -66,5 +86,5 @@
         </div><!-- /.container-fluid -->
     </section>
     <!-- /.content -->
-    <x-admin.js-layout />
+    <x-admin.js-layout/>
 </x-admin.template-admin>

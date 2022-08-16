@@ -6,7 +6,7 @@ use App\Http\Controllers\Admin\{DashboardController as DashAdm,
     RiwayatController as RiwayatAdm};
 use App\Http\Controllers\Home\{HomeController as HomeUser};
 
-
+Route::redirect('/', '/login');
 Route::get('/', function () {
     return view('welcome');
 });
@@ -22,7 +22,8 @@ Route::group(['middleware' => ['web','auth','roles']],function() {
         Route::get('/admin/riwayat', [RiwayatAdm::class, 'index'])->name('adm.riwayat');
     });
     Route::group(['roles' => 'user'], function () {
-        Route::get('/user/dashboard', [HomeUser::class, 'index'])->name('usr.dashboard');
+        Route::get('/user/dashboard/{id?}', [HomeUser::class, 'index'])->name('usr.dashboard');
+        Route::post('/user/dashboard', [HomeUser::class, 'filter'])->name('usr.filter');
     });
 });
 
