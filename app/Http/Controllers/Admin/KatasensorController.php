@@ -32,8 +32,8 @@ class KatasensorController extends Controller
                     return $request->created_at->format('d-m-Y H:i:s');
                 })
                 ->addColumn('action', function ($row) {
-                    $btn = "<button class=\"btn btn-sm btn-primary ml-1\"> Edit</button>";
-                    $btn = $btn."<button class=\"btn btn-sm btn-danger ml-1\"> Hapus</button>";
+//                    $btn = "<button class=\"btn btn-sm btn-primary ml-1\"> Edit</button>";
+                    $btn = "<button class=\"btn btn-sm btn-danger ml-1 open-hapus\" data-id=\"$row->id\" data-toggle=\"modal\" data-target=\"#modalTambah\"> Hapus</button>";
                     return $btn;
                 })
                 ->rawColumns(['action'])
@@ -69,6 +69,33 @@ class KatasensorController extends Controller
                 DB::rollback();
                 return redirect(route('adm.katasensor'))->with(['error' => $e->getMessage()]);
             }
+        } else {
+            return abort("404", "NOT FOUND");
+        }
+    }
+
+    public function destroy(Request $request)
+    {
+        if ($request->routeIs('adm.*')) {
+            $rules = [
+                'id_kata' => 'required|numeric',
+            ];
+            $message = [
+                'id_kata.required' => "Data id tidak ditemukan",
+                'id_kata.numeric' => "Data id tidak ditemukan",
+            ];
+            $request->validateWithBag('hapus', $rules, $message);
+            DB::beginTransaction();
+            try{
+                $kata = Katasensor::findOrFail($request->id_kata);
+                $kata->delete();
+                DB::commit();
+                return redirect(route('adm.katasensor'))->with(['success' => "Data berhasil dihapus"]);
+            } catch (Exception $e) {
+                DB::rollback();
+                return redirect(route('adm.katasensor'))->with(['error' => $e->getMessage()]);
+            }
+
         } else {
             return abort("404", "NOT FOUND");
         }

@@ -46,6 +46,35 @@
             </div>
         </div><!-- /.container-fluid -->
     </section>
+    <div class="modal fade" id="modalTambah" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Hapus</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <form action="{{route('adm.katasensor.hapus')}}" method="post">
+                    @csrf
+                    @method('delete')
+                    <div class="modal-body">
+                        <div class="row mt-2">
+                            <div class="col-md-12">
+                                <input type="hidden" class="form-control" name="id_kata" id="id_kata">
+                                Apakah anda ingin menghapus data ini
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button type="submit" class="btn btn-danger">Hapus</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
     <!-- Modal -->
     <div class="modal fade" id="modalTambah" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered" role="document">
@@ -85,11 +114,12 @@
     <!-- /.content -->
     <x-admin.js-layout />
     <script>
-        // $(document).ready(function () {
-        //     $('#tabel1').DataTable({
-        //         'responsive': true
-        //     });
-        // });
+        /** Saat tombol hapus di klik*/
+        $(document).on("click", ".open-hapus", function (e) {
+            e.preventDefault();
+            let fid = $(this).data('id');
+            $('#id_kata').val(fid);
+        })
         $(document).ready(function () {
             let base_url = "{{route('adm.katasensor')}}";
             $('#tabel1').DataTable({

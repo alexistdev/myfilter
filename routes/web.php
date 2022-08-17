@@ -20,6 +20,7 @@ Route::group(['middleware' => ['web','auth','roles']],function() {
         Route::get('/admin/dashboard', [DashAdm::class, 'index'])->name('adm.dashboard');
         Route::get('/admin/katasensor', [KataAdm::class, 'index'])->name('adm.katasensor');
         Route::post('/admin/katasensor', [KataAdm::class, 'store'])->name('adm.katasensor.save');
+        Route::delete('/admin/katasensor', [KataAdm::class, 'destroy'])->name('adm.katasensor.hapus');
         Route::get('/admin/riwayat', [RiwayatAdm::class, 'index'])->name('adm.riwayat');
     });
     Route::group(['roles' => 'user'], function () {
