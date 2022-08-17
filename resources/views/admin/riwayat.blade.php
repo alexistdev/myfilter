@@ -23,9 +23,7 @@
             <div class="row">
                 <div class="col-md-12">
                     <div class="card card-dark">
-                        <div class="card-header">
-                            <button class="btn btn-sm btn-primary">Add</button>
-                        </div>
+
                         <div class="card-body">
                             <table id="tabel1" class="table table-bordered" style="width: 100%">
                                 <thead>

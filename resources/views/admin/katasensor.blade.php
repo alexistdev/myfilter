@@ -24,7 +24,7 @@
                 <div class="col-md-12">
                     <div class="card card-dark">
                         <div class="card-header">
-                            <button class="btn btn-sm btn-primary">Add</button>
+                            <button class="btn btn-sm btn-primary" data-toggle="modal" data-target="#modalTambah">Add</button>
                         </div>
                         <div class="card-body">
                             <table id="tabel1" class="table table-bordered" style="width: 100%">
@@ -46,6 +46,42 @@
             </div>
         </div><!-- /.container-fluid -->
     </section>
+    <!-- Modal -->
+    <div class="modal fade" id="modalTambah" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Tambah</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <form action="{{route('adm.katasensor.save')}}" method="post">
+                    @csrf
+                <div class="modal-body">
+                    <div class="row mt-2">
+                        <div class="col-md-12">
+                            <label for="namaKata"
+                                   id="namaKata" @class(["form-label","errorLabel",($errors->edit->has('name'))? "text-danger":""]) >Nama
+                                Kata</label>
+                            <input type="text" name="name" maxlength="125"
+                                   @class(["form-control","errorInput",($errors->edit->has('name'))? "is-invalid":""]) value="{{old('name')}}"
+                                   id="namaKata">
+                            @if($errors->edit->has('name'))
+                                <span
+                                    class="text-danger errorMessage">{{$errors->edit->first('name')}}</span>
+                            @endif
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary">Save changes</button>
+                </div>
+                </form>
+            </div>
+        </div>
+    </div>
     <!-- /.content -->
     <x-admin.js-layout />
     <script>

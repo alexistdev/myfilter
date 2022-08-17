@@ -6,7 +6,9 @@ use App\Http\Controllers\Controller;
 use App\Models\Katasensor;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 use Yajra\DataTables\DataTables;
+use Exception;
 
 class KatasensorController extends Controller
 {
@@ -43,4 +45,33 @@ class KatasensorController extends Controller
             'menuKedua' => 'katasensor',
         ));
     }
+
+    public function store(Request $request)
+    {
+        if ($request->routeIs('adm.*')) {
+            $rules = [
+                'name' => 'required|unique:katasensors,name|max:125',
+            ];
+            $message = [
+                'name.required' => "Anda harus mengisi nama kata!",
+                'name.unique' => "Nama sudah terdaftar di dalam database!",
+                'name.max' => "Panjang karakter yang diperbolehkan adalah 125 karakter!",
+            ];
+            $request->validateWithBag('tambah', $rules, $message);
+            DB::beginTransaction();
+            try {
+                $kata = new Katasensor();
+                $kata->name = $request->name;
+                $kata->save();
+                DB::commit();
+                return redirect(route('adm.katasensor'))->with(['success' => "Berhasil ditambah"]);
+            } catch (Exception $e) {
+                DB::rollback();
+                return redirect(route('adm.katasensor'))->with(['error' => $e->getMessage()]);
+            }
+        } else {
+            return abort("404", "NOT FOUND");
+        }
+    }
+
 }
