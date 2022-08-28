@@ -96,9 +96,15 @@
                                                 </a>
                                             </li>
                                             <li>
-                                                <a class="nav-link font-weight-bold" href="{{route('login')}}">
-                                                    Login
-                                                </a>
+                                                @if(!Auth::user())
+                                                    <a class="nav-link font-weight-bold" href="{{route('login')}}">
+                                                        Login
+                                                    </a>
+                                                @else
+                                                    <a class="nav-link font-weight-bold" href="{{route('logout')}}">
+                                                        Logout
+                                                    </a>
+                                                @endif
                                             </li>
 
                                         </ul>
@@ -137,49 +143,139 @@
         </section>
 
 
-        <div class="container p-0 m-0 w-100 mw-100">
+        <div class="container p-5 m-5">
             <div class="row">
                 <div class="col">
                     <img src="{{asset('gambar/gbr1.png')}}" alt="gambar">
 
                 </div>
             </div>
-            <div class="row  p-5 m-5">
-                <div class="col">
-                    <h5>KOLOM KOMENTAR:</h5>
-                    @foreach($dataKomentar as $row)
-                        <div class="card">
-                            <div class="card-body">
-                                <p class="card-text">{{$row->name}}</p>
-                            </div>
+        </div>
+
+        <div class="container py-5">
+
+            <div class="row">
+
+                <div class="col-lg-12 ">
+
+                    <div class="tab-pane tab-pane-navigation active" id="tabsNavigation1">
+                        <h3 class="mt-4 mb-0 pb-0">Pulau Pahawang</h3>
+                        <div class="divider divider-primary divider-small my-3">
+                            <hr class="mt-2 me-auto">
                         </div>
-                    @endforeach
-                    @if(Auth::user())
+
+                        <p class="lead font-weight-regular">Apakah saat ini Anda sedang merencanakan liburan ke Pulau
+                            Pahawang? Ada banyak hal dan kegiatan menarik yang dapat Anda lakukan di sekitaran Pahawang.
+                            Kali ini kita akan bahas panduan dan informasi lengkap seputaran pulau andalan wisata
+                            Lampung ini/</p>
+
+                        <p class="mt-4">Pulau Pahawang adalah salah satu tujuan wisata favorit dan populer di Provinsi
+                            Lampung. Terkenal akan keindahan baharinya, termasuk bawah lautnya. Saat ini sudah banyak
+                            penginapan di sekitar pulau dengan berbagai kelebihannya.</p>
 
                         <div class="row">
+                            <div class="col-lg-5">
 
-                            <div class="col-md-12">
-                                <form action="{{route('usr.filter')}}" method="post">
-                                    <div class="row">
-                                        @csrf
-                                        <div class="col-md-12">
-                                                <textarea name="filter" id="" class="form-control" cols="30"
-                                                          rows="10">   </textarea>
-                                        </div>
-                                        <div class="col-md-12 mt-2">
-                                            <button class="btn btn-sm btn-primary">Submit</button>
-                                        </div>
-
-
+                                <div
+                                    class="owl-carousel owl-carousel-mini-dots owl-theme dots-inside box-shadow-custom mt-1"
+                                    data-plugin-options="{'items': 1, 'margin': 10, 'animateOut': 'fadeOut', 'autoplay': true, 'autoplayTimeout': 3000}">
+                                    <div>
+                                        <img alt="" class="img-fluid" src="{{asset('gambar/pahawang2.jpg')}}">
                                     </div>
-                                </form>
+                                    <div>
+                                        <img alt="" class="img-fluid" src="{{asset('gambar/pahawang1.jpg')}}">
+                                    </div>
+                                </div>
+
+                            </div>
+                            <div class="col-lg-7">
+                                <p>Pulau Pahawang adalah pulau terbesar di sekitar Teluk Ratai. Telah menjadi destinasi
+                                    wisata favorit wisatawan dari berbagai daerah di Indonesia.Secara administratif
+                                    masuk wilayah Kecamatan Punduh Pidada, Kabupaten Pasawaran, Provinsi Lampung. </p>
+                                <p>Yang ditawarkan Pulau Pahawang adalah keindahan pantai dan bawah lautnya. Pulau ini
+                                    memiliki banyak pantai bepasir putih di bagian utara, timur, dan selatan.Sebagian
+                                    lagi berupa pantai dengan hamparan hutan mangrove yang lebat.Dengan keliling lebih
+                                    dari 12 kilometer, pulau ini memiliki luas lebih dar 700an hektar. Dan dihuni oleh
+                                    lebih dari 300 kepala keluarga. Yang kebanyakan tinggal di dusun-dusun di dekat
+                                    dengan pantai.</p>
                             </div>
                         </div>
 
-                    @endif
+                        <h3 class="text-5 my-4 pb-0">Keunggulan Destinasi WIsata ini:</h3>
+
+                        <div class="row mt-3">
+                            <div class="col-lg-6">
+                                <ul class="list list-icons list-primary text-uppercase font-weight-bold text-color-dark text-2">
+                                    <li><i class="fas fa-check"></i> Memiliki spot snorkling dan diving.</li>
+                                    <li><i class="fas fa-check"></i> Memiliki keindahan laut yang luar biasa.</li>
+                                    <li><i class="fas fa-check"></i> Transportasi umum yang mudah ditemui.</li>
+                                </ul>
+                            </div>
+                            <div class="col-lg-6">
+                                <ul class="list list-icons list-primary text-uppercase font-weight-bold text-color-dark text-2">
+                                    <li><i class="fas fa-check"></i> Jarak tidak terlalu jauh dari Kota Bandarlampung.
+                                    </li>
+                                    <li><i class="fas fa-check"></i> Banyak penginapan dengan biaya relatif murah.</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <h3 class="text-5 my-4 pb-0">Komentar:</h3>
+                        <div class="row mt-3">
+                            <div class="col-md-12">
+                                @foreach($dataKomentar as $row)
+                                    <div class="card">
+                                        <div class="card-body">
+                                            <p class="card-text">{{$row->name}}</p>
+                                        </div>
+                                    </div>
+                                @endforeach
+                            </div>
+                            @if(!Auth::user())
+                                <p>Anda harus login untuk dapat mengisi kolom komentar. <a href="{{route('login')}}">Login</a>
+                                </p>
+                            @endif
+                            @if(Auth::user())
+                                <div class="row">
+
+                                    <div class="col-md-12">
+                                        Silahkan tulis komentar anda:
+                                        <form action="{{route('usr.filter')}}" method="post">
+                                            <div class="row">
+                                                @csrf
+                                                <div class="col-md-12">
+                                                <textarea name="filter" id="" class="form-control" cols="30"
+                                                          rows="10">   </textarea>
+                                                </div>
+                                                <div class="col-md-12 mt-2">
+                                                    <button class="btn btn-sm btn-primary">Submit</button>
+                                                </div>
+
+
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        @if($katakotor !== "")
+                                        Hasil kata yang difilter :<span class="text-danger"> {{$katakotor}}</span><br/>
+                                        @endif
+                                        @if($solusi !== "")
+                                            Silahkan anda mengganti kata kasar tersebut dengan kata : <span
+                                                class="text-success">{{$solusi}}</span>
+                                        @endif
+                                    </div>
+                                </div>
+                            @endif
+                        </div>
+                    </div>
+
                 </div>
+
             </div>
+
         </div>
+
 
     </div>
 

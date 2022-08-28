@@ -80,7 +80,7 @@ class HomeController extends Controller
             $riwayat->ygdifilter = $ditemukan;
             $riwayat->solusi = $solusi;
             $riwayat->save();
-            return redirect(route('usr.dashboard',$this->users->id));
+            return redirect(route('frontend.pahawang',$this->users->id));
 
         } else {
             return abort("404", "NOT FOUND");

@@ -33,7 +33,7 @@ class KatasensorController extends Controller
                 })
                 ->addColumn('action', function ($row) {
 //                    $btn = "<button class=\"btn btn-sm btn-primary ml-1\"> Edit</button>";
-                    $btn = "<button class=\"btn btn-sm btn-danger ml-1 open-hapus\" data-id=\"$row->id\" data-toggle=\"modal\" data-target=\"#modalTambah\"> Hapus</button>";
+                    $btn = "<button class=\"btn btn-sm btn-danger ml-1 open-hapus\" data-id=\"$row->id\" data-toggle=\"modal\" data-target=\"#modalHapus\"> Hapus</button>";
                     return $btn;
                 })
                 ->rawColumns(['action'])

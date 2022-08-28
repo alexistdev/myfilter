@@ -9,7 +9,7 @@ use App\Http\Controllers\FrontendController as Home;
 
 //Route::redirect('/', '/login');
 Route::get('/', [Home::class,'index'])->name('frontend.home');
-Route::get('/pulau_pawahang', [Home::class,'pahawang'])->name('frontend.pahawang');
+Route::get('/pulau_pawahang/{id?}', [Home::class,'pahawang'])->name('frontend.pahawang');
 
 Route::get('/dashboard', function () {
     return view('dashboard');
