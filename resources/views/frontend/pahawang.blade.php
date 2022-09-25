@@ -13,26 +13,18 @@
     <meta name="author" content="okler.net">
 
     <!-- Favicon -->
-    <link rel="shortcut icon" href="{{asset('porto/img/favicon.ico')}}" type="image/x-icon"/>
+    <link rel="shortcut icon" href="{{asset('porto/img/favicon.ico')}}" type="image/x-icon" />
     <link rel="apple-touch-icon" href="{{asset('porto/img/apple-touch-icon.png')}}">
 
     <!-- Mobile Metas -->
     <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1.0, shrink-to-fit=no">
 
     <!-- Web Fonts  -->
-    <link id="googleFonts"
-          href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700,800%7CShadows+Into+Light&display=swap"
-          rel="stylesheet" type="text/css">
+    <link id="googleFonts" href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700,800%7CShadows+Into+Light&display=swap" rel="stylesheet" type="text/css">
 
     <!-- Vendor CSS -->
     <link rel="stylesheet" href="{{asset('porto/vendor/bootstrap/css/bootstrap.min.css')}}">
     <link rel="stylesheet" href="{{asset('porto/vendor/fontawesome-free/css/all.min.css')}}">
-    <link rel="stylesheet" href="{{asset('porto/vendor/animate/animate.compat.css')}}">
-    <link rel="stylesheet" href="{{asset('porto/vendor/simple-line-icons/css/simple-line-icons.min.css')}}">
-    <link rel="stylesheet" href="{{asset('porto/vendor/owl.carousel/assets/owl.carousel.min.css')}}">
-    <link rel="stylesheet" href="{{asset('porto/vendor/owl.carousel/assets/owl.theme.default.min.css')}}">
-    <link rel="stylesheet" href="{{asset('porto/vendor/magnific-popup/magnific-popup.min.css')}}">
-    <link rel="stylesheet" href="{{asset('porto/vendor/bootstrap-datepicker/css/bootstrap-datepicker3.css')}}">
 
     <!-- Theme CSS -->
     <link rel="stylesheet" href="{{asset('porto/css/theme.css')}}">
@@ -40,22 +32,13 @@
     <link rel="stylesheet" href="{{asset('porto/css/theme-blog.css')}}">
     <link rel="stylesheet" href="{{asset('porto/css/theme-shop.css')}}">
 
-    <!-- Revolution Slider CSS -->
-    <link rel="stylesheet" href="{{asset('porto/vendor/rs-plugin/css/settings.css')}}">
-    <link rel="stylesheet" href="{{asset('porto/vendor/rs-plugin/css/layers.css')}}">
-    <link rel="stylesheet" href="{{asset('porto/vendor/rs-plugin/css/navigation.css')}}">
+
 
     <!-- Demo CSS -->
     <link rel="stylesheet" href="{{asset('porto/css/demos/demo-hotel.css')}}">
 
     <!-- Skin CSS -->
     <link id="skinCSS" rel="stylesheet" href="{{asset('porto/css/skins/skin-hotel.css')}}">
-
-    <!-- Theme Custom CSS -->
-    <link rel="stylesheet" href="{{asset('porto/css/custom.css')}}">
-
-    <!-- Head Libs -->
-    <script src="{{asset('porto/vendor/modernizr/modernizr.min.js')}}"></script>
 
 </head>
 <body>
@@ -174,21 +157,7 @@
                             penginapan di sekitar pulau dengan berbagai kelebihannya.</p>
 
                         <div class="row">
-                            <div class="col-lg-5">
-
-                                <div
-                                    class="owl-carousel owl-carousel-mini-dots owl-theme dots-inside box-shadow-custom mt-1"
-                                    data-plugin-options="{'items': 1, 'margin': 10, 'animateOut': 'fadeOut', 'autoplay': true, 'autoplayTimeout': 3000}">
-                                    <div>
-                                        <img alt="" class="img-fluid" src="{{asset('gambar/pahawang2.jpg')}}">
-                                    </div>
-                                    <div>
-                                        <img alt="" class="img-fluid" src="{{asset('gambar/pahawang1.jpg')}}">
-                                    </div>
-                                </div>
-
-                            </div>
-                            <div class="col-lg-7">
+                            <div class="col-lg-12">
                                 <p>Pulau Pahawang adalah pulau terbesar di sekitar Teluk Ratai. Telah menjadi destinasi
                                     wisata favorit wisatawan dari berbagai daerah di Indonesia.Secara administratif
                                     masuk wilayah Kecamatan Punduh Pidada, Kabupaten Pasawaran, Provinsi Lampung. </p>
@@ -296,14 +265,9 @@
 
 <!-- Vendor -->
 <script src="{{asset('porto/vendor/plugins/js/plugins.min.js')}}"></script>
-<script src="{{asset('porto/vendor/bootstrap-datepicker/js/bootstrap-datepicker.min.js')}}"></script>
 
 <!-- Theme Base, Components and Settings -->
 <script src="{{asset('porto/js/theme.js')}}"></script>
-
-<!-- Revolution Slider Scripts -->
-<script src="{{asset('porto/vendor/rs-plugin/js/jquery.themepunch.tools.min.js')}}"></script>
-<script src="{{asset('porto/vendor/rs-plugin/js/jquery.themepunch.revolution.min.js')}}"></script>
 
 <!-- Current Page Vendor and Views -->
 <script src="{{asset('porto/js/views/view.contact.js')}}"></script>
@@ -316,7 +280,6 @@
 
 <!-- Theme Initialization Files -->
 <script src="{{asset('porto/js/theme.init.js')}}"></script>
-
 
 </body>
 </html>
